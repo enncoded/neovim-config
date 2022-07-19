@@ -105,9 +105,14 @@ local config = {
           require('catppuccin').setup {}
         end,
       },
-      {"unblevable/quick-scope"},
-      {"wellle/targets.vim"},
-      {"simrat39/rust-tools.nvim"},
+      { "unblevable/quick-scope" },
+      { "wellle/targets.vim" },
+      {
+        "simrat39/rust-tools.nvim",
+        config = function()
+          require('rust-tools').setup {}
+        end
+      },
     },
     -- All other entries override the setup() call for default plugins
     ["null-ls"] = function(config)
@@ -213,15 +218,15 @@ local config = {
     -- Add overrides for LSP server settings, the keys are the name of the server
     ["server-settings"] = {
       yamlls = {
-        on_attach = function(client,bufnr)
+        on_attach = function(client, bufnr)
           client.resolved_capabilities.document_formatting = true
         end,
         settings = {
           yaml = {
-          schemas = {
+            schemas = {
               ["https://json.schemastore.org/semgrep.json"] = "{semgrep-rules,proprietary-rules}/**/*.yaml"
             },
-            format = {enable = true},
+            format = { enable = true },
             validate = true,
             completion = true,
           },
@@ -232,24 +237,24 @@ local config = {
         settings = {
           ["rust_analyzer"] = {
             imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
+              granularity = {
+                group = "module",
+              },
+              prefix = "self",
             },
             cargo = {
-                buildScripts = {
-                    enable = true,
-                },
+              buildScripts = {
+                enable = true,
+              },
             },
             procMacro = {
-                enable = true
+              enable = true
             },
           },
         },
       },
       pyright = {
-        cmd = {'pyright-langserver', '--stdio'},
+        cmd = { 'pyright-langserver', '--stdio' },
         -- on_attach = on_attach,
       },
       jsonls = {
