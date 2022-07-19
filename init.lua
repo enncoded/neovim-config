@@ -1,6 +1,6 @@
-local on_attach = function (client)
-  require'completion'.on_attach(client)
-end
+-- local on_attach = function (client)
+--   require'completion'.on_attach(client)
+-- end
 
 local config = {
 
@@ -228,7 +228,7 @@ local config = {
         },
       },
       rust_analyzer = {
-        on_attach = on_attach,
+        -- on_attach = on_attach,
         settings = {
           ["rust_analyzer"] = {
             imports = {
@@ -250,7 +250,7 @@ local config = {
       },
       pyright = {
         cmd = {'pyright-langserver', '--stdio'},
-        on_attach = on_attach,
+        -- on_attach = on_attach,
       },
       jsonls = {
         settings = {
